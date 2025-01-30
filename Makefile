@@ -14,7 +14,7 @@ ca.crt: openssl.conf ca.key
 ca: ca.key ca.crt
 
 server.csr: openssl.conf server.key
-	openssl req -new -config openssl.conf -key server.key -subj "/CN=mas-util-devn/O=server" -out $@
+	openssl req -new -config openssl.conf -key server.key -subj "/CN=dev/O=server" -out $@
 
 server.crt: openssl.conf server.key server.csr ca.key ca.crt
 	openssl req -config openssl.conf -CA ca.crt -CAkey ca.key \
@@ -24,7 +24,7 @@ server.crt: openssl.conf server.key server.csr ca.key ca.crt
 server: server.key server.csr server.crt
 
 client.csr: openssl.conf client.key
-	openssl req -new -config openssl.conf -key client.key -subj "/CN=mas-util-devn/O=client" -out $@
+	openssl req -new -config openssl.conf -key client.key -subj "/CN=dev/O=client" -out $@
 
 client.crt: openssl.conf client.csr ca.key ca.crt
 	openssl req -config openssl.conf -CA ca.crt -CAkey ca.key \
